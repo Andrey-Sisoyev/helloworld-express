@@ -1,0 +1,35 @@
+span.hook-cont-table-rndnrs
+script(type='text/javascript').
+    $(document).ready(function() {
+        var cntRows = Math.floor((Math.random()*10)+1);
+        var cntCols = Math.floor((Math.random()*10)+1);
+        
+        function getNr() {
+            return Math.floor(Math.random() * 1000)/1000;
+        }
+        
+        var rows = [];
+        for(var y = 0; y < cntRows; y++) {
+            var cols = [];
+            for(var x = 0; x < cntCols; x++) {
+                var col = Templates['col']({"col_content": getNr()});
+                cols.push(col);
+            }
+            
+            var row = Templates['row']({cols: cols});
+            rows.push(row);
+        }
+        
+        var table = Templates['table']({
+            "tbl_name": 'Random numbers (' + cntCols + 'x' + cntRows + ') [Try out JadeAsset templating]'
+          , rows: rows
+        });
+        
+        var $contTbl = $('.hook-cont-table-rndnrs');
+        $contTbl.html(table);
+    });
+hr
+h1 Conclusions [JadeAsset templating]
+i.
+  (1) Should not use hyphens in locals. Wrong: "tbl-name"; correct "tbl_name".<br/>
+  (2) Whenever local contains pure html, there seems to be no way to insert it unless u use "- buf.push(pureHtml);".

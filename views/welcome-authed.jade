@@ -1,0 +1,28 @@
+extends layout
+
+block content
+  h1= title
+  p.
+    Welcome to Express, dear #{user}!
+    Your authorization time: #{utils.formatDate(authed)} [Try out Express + Custom utility functions]
+  a(onclick="getCurrentServerTime()") Get current server time [Try out Express + AJAX]
+  .hook-resp-cont
+  script.
+      function getCurrentServerTime() {
+        $.ajax({
+            type: "GET",
+            url: '/serv-time',
+            success: function(data) {
+                console.log("getCurrentServerTime success");
+                $('.hook-resp-cont').text(data);
+            },
+            error: function(jqXHR, textStatus, errorThrown){
+                console.log("getCurrentServerTime error " + textStatus + " " + errorThrown);
+                console.log(jqXHR);
+            },
+            dataType: "text",
+            cache: false
+        });
+      }
+      
+  
