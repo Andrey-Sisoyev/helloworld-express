@@ -1,0 +1,43 @@
+h1 Choose currently active file for everybody
+table
+  tr
+    td
+      ul#ui-file-select
+        - each availFile in availFiles
+          li.ui-file-select-item #{availFile}
+    td 
+      span#file-content
+        - if(currentFileData)
+          | #{currentFileData}
+        
+
+script.
+  function chooseServerFile(fName, cb) {
+    $.ajax({
+        type: 'GET',
+        url: '/file/choose-report',
+        data: {fName: fName},
+        success: cb,
+        error: function(jqXHR, textStatus, errorThrown){
+            console.log("chooseServerFile error " + textStatus + " " + errorThrown);
+            console.log(jqXHR);
+        },
+        dataType: "text",
+        cache: false
+    });
+  }
+
+  function whenGotFileReport(data_) { 
+      var data = data_.replace('\n', '<br/>');
+      $fcontent.html(data); 
+  }
+
+  var $fsel = $('#ui-file-select');
+  var $fcontent = $('#file-content');
+
+  $fsel.selectable({
+      selected: function( event, ui ) {
+        var fName = $(ui.selected).text();
+        chooseServerFile(fName, whenGotFileReport);
+      }
+  });

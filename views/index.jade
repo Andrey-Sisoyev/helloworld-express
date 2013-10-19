@@ -4,10 +4,10 @@ block content
   h1= title
   p Welcome to #{title}
   if failedLogin
-      p(style="color: red") Failed to login
+    p(style="color: red") Failed to login
   form(name="login", action="/login", method="post")
-      input(type="text", name="user")
-      input(type="password", name="pass")
-      input(type="submit", value="login")
+    input(type="text", name="user")
+    input(type="password", name="pass")
+    input(type="submit", value="login")
   p 
-      i (Username length === Password length - 1 ==> Successfull login.)
+    i (Username length === Password length - 1 ==&gt; Successfull login.)

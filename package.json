@@ -9,6 +9,8 @@
     "express": "3.4.0",
     "jade": "*",
     "moment": "*",
-    "asset-rack": "*"
+    "asset-rack": "*",
+    "prettyjson": "*",
+    "circular-json": "*"
   }
 }
