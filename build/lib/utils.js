@@ -21,4 +21,16 @@
     }
   };
 
+  exports.setTimeout_ = function(to, cb) {
+    return setTimeout(cb, to);
+  };
+
+  exports.setTimeout0 = function(cb) {
+    return setTimeout(cb, 0);
+  };
+
+  exports.getRandomInt = function(min, max) {
+    return Math.floor((Math.random() * (max - min + 1)) + min);
+  };
+
 }).call(this);

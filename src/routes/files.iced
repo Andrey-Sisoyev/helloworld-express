@@ -1,7 +1,6 @@
 # Complex ICS async/defer combinations will be tried out here
 
 fs = require 'fs'
-stringify = require 'json-stringify-safe'
 prettyjson = require 'prettyjson'
 CircularJSON = require 'circular-json'
 

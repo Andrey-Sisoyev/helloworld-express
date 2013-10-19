@@ -3,6 +3,10 @@ assert = require 'assert'
 projHome = process.env.HOME_SRC_HWE
 assert.ok typeof projHome == 'string' && projHome.length > 0
 
+asyncTrials = require './async-trials'
+asyncTrials.run()
+
+
 express = require 'express'  
 http    = require 'http'  
 path    = require 'path'  
@@ -37,7 +41,7 @@ assets.on 'complete', ->
     app = express()
 
     # all environments
-    app.set 'port', process.env.PORT || 3001
+    app.set 'port', process.env.PORT || 3000
     app.set 'views', projHome + '/views'  
     app.set 'view engine', 'jade'  
 
